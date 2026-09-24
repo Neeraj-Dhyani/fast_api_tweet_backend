@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Control Room{% endblock %} · Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static_1/css/admin.css">
+{% block head %}{% endblock %}
+</head>
+<body>
+<div class="shell">
+  <aside class="rail">
+    <div class="rail-brand">
+      <span class="rail-brand-mark">◆</span>
+      <span class="rail-brand-text">Control&nbsp;Room</span>
+    </div>
+    <nav class="rail-nav">
+      <a href="/admin/dashboard" data-nav="dashboard"><span class="nav-idx">01</span>Overview</a>
+      <a href="/admin/users" data-nav="users"><span class="nav-idx">02</span>Users</a>
+      <a href="/admin/tweets" data-nav="tweets"><span class="nav-idx">03</span>Tweets</a>
+      <a href="/admin/comments" data-nav="comments"><span class="nav-idx">04</span>Comments</a>
+    </nav>
+    <button class="rail-logout" id="logoutBtn">Sign out</button>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1>{% block heading %}{% endblock %}</h1>
+        <p>{% block subheading %}{% endblock %}</p>
+      </div>
+      <div class="topbar-status">
+        <span class="dot"></span>
+        <span id="adminName">—</span>
+      </div>
+    </header>
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="/static_1/js/api.js"></script>
+<script>
+  requireAuth();
+  markActiveNav("{% block navkey %}{% endblock %}");
+  loadAdminName();
+  document.getElementById("logoutBtn").addEventListener("click", logout);
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

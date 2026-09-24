@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Comments{% endblock %}
+{% block navkey %}comments{% endblock %}
+{% block heading %}Comments{% endblock %}
+{% block subheading %}Browse comments, or filter by user.{% endblock %}
+
+{% block content %}
+<section class="panel">
+  <div class="panel-head">
+    <h2>Lookup by user</h2>
+  </div>
+  <div class="lookup-row">
+    <div class="lookup-field">
+      <label for="lookupUserId">User ID</label>
+      <div class="lookup-inline">
+        <input type="text" id="lookupUserId" placeholder="user id">
+        <button id="lookupUserBtn">Find</button>
+      </div>
+    </div>
+  </div>
+  <p class="lookup-note" id="lookupNote"></p>
+</section>
+
+<section class="panel">
+  <div class="panel-head">
+    <h2 id="commentsTitle">All comments</h2>
+    <input type="text" id="commentSearch" class="search-input" placeholder="Filter by id or content…">
+  </div>
+  <div class="table-wrap">
+    <table class="data-table" id="commentsTable">
+      <thead>
+        <tr>
+          <th>Comment ID</th>
+          <th>User</th>
+          <th>Tweet ID</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody id="commentsBody">
+        <tr><td colspan="4" class="empty-row">Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static_1/js/comments.js"></script>
+{% endblock %}
