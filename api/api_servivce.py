@@ -8,7 +8,7 @@ router = APIRouter(prefix="/api/v1", tags=["App_API"])
 @router.get("/all_user")
 def get_all_user(api_key=Depends(api_key_auth)):
     try:
-        all_user = list(User.select().dicts)
+        all_user = list(User.select())
 
         return{
              "status":status.HTTP_200_OK,
@@ -112,7 +112,7 @@ def get_all_comment(api_key=Depends(api_key_auth)):
             )
 
 @router.get("/getcommentbyuser")
-def get_tweets_by_user(user_id:str, api_key=(api_key_auth)):
+def get_tweets_by_user(user_id:str, api_key=Depends(api_key_auth)):
      try:
           tweet_by_user = list(Comment.select().where(Comment.user == user_id).dicts())
           if not tweet_by_user:
