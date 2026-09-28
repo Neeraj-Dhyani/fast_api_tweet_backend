@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Users{% endblock %}
+{% block navkey %}users{% endblock %}
+{% block heading %}Users{% endblock %}
+{% block subheading %}Ban, unban or remove accounts.{% endblock %}
+
+{% block content %}
+<section class="panel">
+  <div class="panel-head">
+    <h2>All users</h2>
+    <input type="text" id="userSearch" class="search-input" placeholder="Filter by username or id…">
+  </div>
+  <div class="table-wrap">
+    <table class="data-table" id="usersTable">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>User ID</th>
+          <th>Status</th>
+          <th class="col-actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="usersBody">
+        <tr><td colspan="4" class="empty-row">Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static_1/js/users.js"></script>
+{% endblock %}

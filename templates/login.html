@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in · Control Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static_1/css/admin.css">
+</head>
+<body class="login-body">
+  <div class="login-card">
+    <div class="login-mark">◆</div>
+    <h1>Control Room</h1>
+    <p class="login-sub">Sign in to moderate users, tweets and comments.</p>
+
+    <form id="loginForm" autocomplete="off">
+      <label for="adminname">Admin name</label>
+      <input type="text" id="adminname" name="adminname" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" id="loginBtn">Sign in</button>
+      <p class="login-error" id="loginError"></p>
+    </form>
+  </div>
+
+  <script src="/static_1/js/api.js"></script>
+  <script src="/static_1/js/login.js"></script>
+</body>
+</html>

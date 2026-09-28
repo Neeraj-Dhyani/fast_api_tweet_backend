@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Overview{% endblock %}
+{% block navkey %}dashboard{% endblock %}
+{% block heading %}Overview{% endblock %}
+{% block subheading %}Live counts across the platform.{% endblock %}
+
+{% block content %}
+<section class="stat-grid" id="statGrid">
+  <div class="stat-card">
+    <span class="stat-label">Users</span>
+    <span class="stat-value" id="statUsers">—</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Tweets</span>
+    <span class="stat-value" id="statTweets">—</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Comments</span>
+    <span class="stat-value" id="statComments">—</span>
+  </div>
+  <div class="stat-card stat-card--warn">
+    <span class="stat-label">Banned users</span>
+    <span class="stat-value" id="statBanned">—</span>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel-head">
+    <h2>Shortcuts</h2>
+  </div>
+  <div class="shortcut-row">
+    <a class="shortcut" href="/admin/users">Review users →</a>
+    <a class="shortcut" href="/admin/tweets">Review tweets →</a>
+    <a class="shortcut" href="/admin/comments">Review comments →</a>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static_1/js/dashboard.js"></script>
+{% endblock %}
