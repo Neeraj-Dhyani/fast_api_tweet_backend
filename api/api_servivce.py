@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from models.model  import User, Tweet, Comment, ReplyComment
 from middleware.API_key_auth import api_key_auth
 
-router = APIRouter(prefix="/api/v1", tags="App_API")
+router = APIRouter(prefix="/api/v1", tags=["App_API"])
 
 
-router.get("/all_user")
+@router.get("/all_user")
 def get_all_user(api_key=Depends(api_key_auth)):
     try:
         all_user = list(User.select().dicts)
@@ -146,9 +146,28 @@ def get_all_reply_comment(api_key=Depends(api_key_auth)):
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail="Internal Server Error!"
             )
+     
+@router.get("/getallreplybycomment")
+def get_all_reply_by_comment(comment_id:str, api_key=Depends(api_key_auth)):
+      try:
+            reply = list(ReplyComment.select().where(ReplyComment.Comment == comment_id).dicts())
+            if not reply:
+                  raise HTTPException(
+                        status_code=status.HTTP_404_NOT_FOUND,
+                        detail="No Reply!"
+                  )
+            return{
+                  "status":status.HTTP_200_OK,
+                  "reply":reply
+            }
+      except ImportError:
+                  raise HTTPException(
+                      status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                      detail="Internal Server Error!"
+                  )
 
 @router.get("/getcommentbyuser")
-def get_tweets_by_user(comment_id:str, api_key=(api_key_auth)):
+def get_comment_by_user(comment_id:str, api_key=(api_key_auth)):
      try:
           reaply_comment = list(ReplyComment.select().where(ReplyComment.Comment == Comment.id).dicts())
           if not reaply_comment:

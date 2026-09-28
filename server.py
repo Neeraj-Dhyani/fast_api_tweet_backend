@@ -14,6 +14,7 @@ from api.tweet_service import router as tweet_router
 from api.comment_service import router as comment_router
 from api.admin_service import router as admin_router
 from admin_panel import router as template_router
+from api.api_servivce import router as api_router
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -51,3 +52,4 @@ app.include_router(tweet_router)
 app.include_router(comment_router)
 app.include_router(admin_router)
 app.include_router(template_router)
+app.include_router(api_router)

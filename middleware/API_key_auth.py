@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os 
 
 load_dotenv()
-security = HTTPBearer
+security = HTTPBearer()
 def api_key_auth(credentials:HTTPAuthorizationCredentials=Depends(security)):
     try:
           api_key  = credentials
