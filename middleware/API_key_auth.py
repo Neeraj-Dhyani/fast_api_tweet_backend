@@ -7,7 +7,7 @@ load_dotenv()
 security = HTTPBearer()
 def api_key_auth(credentials:HTTPAuthorizationCredentials=Depends(security)):
     try:
-          api_key  = credentials
+          api_key  = credentials.credentials
           if not api_key:
                 raise HTTPException(
                       status_code=status.HTTP_401_UNAUTHORIZED,
