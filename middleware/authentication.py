@@ -21,11 +21,6 @@ def authentication(credentials : HTTPAuthorizationCredentials = Depends(security
             
             docoded = jwt.decode(token, os.getenv("SECRET_JWT"), algorithms=["HS256"])
 
-            if docoded["admin"]:
-                 raise HTTPException(
-                      status_code=status.HTTP_403_FORBIDDEN,
-                      detail="No user in database"
-                 )
             
             user = User.get_or_none(User.username == docoded["data"]["username"])
 
