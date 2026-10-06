@@ -36,6 +36,7 @@ app = FastAPI(lifespan=lifesspan)
 origins = [
     "http://localhost",
     "http://localhost:5173",
+    "https://tweetfrontend.vercel.app/login"
 ]
 
 app.add_middleware(
